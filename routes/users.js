@@ -17,7 +17,16 @@ const users = [
 
 router.get('/', (req, res) => {
     console.log(users);
-    res.send(users);
+    const user = req.body;
+    users.push(user);
+
+    res.send(`User with the name ${users.firstName} added to the Database.`);
+})
+
+router.post('/', (req, res) => {
+    const user = req.body
+    console.log(req.body);
+    res.send('POST REQUEST REACHED');
 })
 
 export default router;
