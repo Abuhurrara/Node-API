@@ -29,4 +29,8 @@ router.post('/', (req, res) => {
     res.send('POST REQUEST REACHED');
 })
 
+router.delete('/', (req, res) => {
+    console.log("This user is deleted.")
+})
+
 export default router;
