@@ -1,5 +1,7 @@
 import express from 'express';
 
+import { v4 as uuidv4 } from 'uuid';
+
 const router = express.Router();
 
 const users = [
@@ -16,17 +18,19 @@ const users = [
 ]
 
 router.get('/', (req, res) => {
-    console.log(users);
-    const user = req.body;
-    users.push(user);
-
-    res.send(`User with the name ${users.firstName} added to the Database.`);
+    res.send(users);
 })
 
 router.post('/', (req, res) => {
-    const user = req.body
-    console.log(req.body);
-    res.send('POST REQUEST REACHED');
+    const user = req.body;
+
+    const userId = uuidv4();
+
+    const userIwthId = {...user, id: userId};
+
+    users.push(userWithId);
+    
+    res.send(`User with the name ${users.firstName} added to the Database.`);
 })
 
 router.delete('/', (req, res) => {
